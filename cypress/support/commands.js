@@ -23,3 +23,20 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+// Logs in from the web page
+Cypress.Commands.add('webLogin', (username, password) => {
+  cy.visit('/');
+  Cypress.log({
+    name: 'webLogin',
+    message: username + ' | ' + password
+  });
+
+  //login with valid username and password
+  cy.get('#user-name')
+    .clear()
+    .type(username);
+  cy.get('#password')
+    .clear()
+    .type(password + '{enter}');
+});

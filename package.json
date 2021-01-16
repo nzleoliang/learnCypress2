@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/nzleoliang/learnCypress2#readme",
   "dependencies": {
-    "cypress": "^6.2.1"
+    "cypress": "^6.2.1",
+    "cypress-xpath": "^1.6.1"
   }
 }
