@@ -26,7 +26,6 @@
 
 // Logs in from the web page
 Cypress.Commands.add('webLogin', (username, password) => {
-  cy.visit('/');
   Cypress.log({
     name: 'webLogin',
     message: username + ' | ' + password
@@ -39,4 +38,7 @@ Cypress.Commands.add('webLogin', (username, password) => {
   cy.get('#password')
     .clear()
     .type(password + '{enter}');
+  cy.get('input[type="submit"]')
+    .should('be.visible')
+    .click();
 });

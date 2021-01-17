@@ -100,6 +100,10 @@ describe('basic testing cases', () => {
     );
     cy.get('#dropdowm-menu-1').select('Python');
     cy.get('#dropdowm-menu-1').should('have.value', 'python');
+    cy.get('#dropdowm-menu-1')
+      .invoke('val')
+      .should('contain', 'python');
+    cy.get('#dropdowm-menu-1').contains('Python');
 
     cy.wait(1000);
 
@@ -117,7 +121,7 @@ describe('basic testing cases', () => {
     );
   });
 
-  it('scrolling on the page ', () => {
+  it.only('scrolling on the page ', () => {
     cy.visit('https://docs.cypress.io/api/commands/screenshot.html#Assertions');
     // if you click an element which is invisible you don't need to scroll it into view beforehand. Cypress do it for you.
     cy.contains('See It In Action').click();
