@@ -6,3 +6,7 @@ yarn-error.log
 # Cypress
 cypress/screenshots/
 cypress/videos/
+testResult/*
+
+# misc
+.DS_Store
