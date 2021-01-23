@@ -1,0 +1,13 @@
+{
+  "baseUrl": "https://reqres.in/api",
+  "watchForFileChanges": true,
+  "video": false,
+  "defaultCommandTimeout": 60000,
+  "env": {
+    "adminPassword": "password",
+    "adminUser": "admin"
+  },
+  "integrationFolder": "cypress/integration/project",
+  "viewportWidth": 1600,
+  "viewportHeight": 1200
+}

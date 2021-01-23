@@ -26,7 +26,7 @@ describe('read and write files', () => {
       .should('eq', 'Ming');
 
     cy.readFile(filePath)
-      .its('firstname')
-      .should('contain', 'Ming');
+      .its('lastname')
+      .should('contain', 'Li');
   });
 });

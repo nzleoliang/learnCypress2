@@ -13,7 +13,7 @@ describe('login testing', () => {
 });
 
 describe('using alias in login testing', () => {
-  beforeEach(function() {
+  beforeEach(function () {
     cy.visit('https://demoqa.com/login');
     cy.get('#userName').as('user');
     cy.get('#password').as('pass');
@@ -33,7 +33,7 @@ describe('using alias in login testing', () => {
 });
 
 describe.skip('using alias in login testing', () => {
-  beforeEach(function() {
+  beforeEach(function () {
     cy.visit('https://demoqa.com/login');
     helper.assignAliases();
   });
@@ -45,7 +45,27 @@ describe.skip('using alias in login testing', () => {
   });
 });
 
-describe.only('using fixture in login testing', () => {
+describe('using fixture in login testing', () => {
+  it('glitch user', () => {
+    cy.visit('https://www.saucedemo.com');
+    cy.fixture('login.json').then(loginInfo => {
+      cy.log(JSON.stringify(loginInfo));
+      //login with valid username and password
+      cy.get('#user-name')
+        .clear()
+        .type(loginInfo.performance.user);
+      cy.get('#password')
+        .clear()
+        .type(loginInfo.performance.password);
+      cy.get('input[type="submit"]')
+        .should('be.visible')
+        .click();
+
+      //Check login success
+      cy.get('body', { timeout: 10 }).should('contain', 'Products');
+    });
+  });
+
   it('successful login', () => {
     cy.visit('https://www.saucedemo.com');
     cy.fixture('login.json').then(loginInfo => {
@@ -81,7 +101,7 @@ describe.only('using fixture in login testing', () => {
     });
   });
 
-  it.only('successful login by calling customised login command', () => {
+  it('successful login by calling customised login command', () => {
     cy.visit('https://www.saucedemo.com');
     cy.fixture('login').then(loginInfo => {
       cy.webLogin(
