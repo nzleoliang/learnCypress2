@@ -28,6 +28,16 @@ export class TodoPage {
       .contains('li', todo.trim(), { log: false })
   }
 
+  selectAll() {
+    // we use 'check' instead of 'click'
+    // because that indicates our intention much clearer    
+    cy.get('.toggle-all').check()
+  }
+
+  unselectAll() {
+    cy.get('.toggle-all').uncheck()
+  }
+
   toggle(k) {
     cy.get('.todo-list li', { log: false })
       .eq(k)
@@ -56,6 +66,19 @@ export class TodoPage {
   clearCompleted() {
     cy.get('.clear-completed').click()
   }
+
+  validateCompleteStatus(k) {
+    cy.get('@todos')
+      .eq(k)
+      .should('have.class', 'completed')
+  }
+
+  validateNotCompleteStatus(k) {
+    cy.get('@todos')
+      .eq(k)
+      .should('not.have.class', 'completed')
+  }
+
 }
 
 export const todoPage = new TodoPage()
