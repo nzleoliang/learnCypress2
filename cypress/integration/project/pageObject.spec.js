@@ -3,14 +3,8 @@
 
 import { TodoPage, todoPage } from '../../support/pageObjects/todo.page';
 
-describe('TodoMVC - React', function () {
-
-
-  context.only('Mark all as completed', function () {
-    // New commands used here:
-    // - cy.check    https://on.cypress.io/api/check
-    // - cy.uncheck  https://on.cypress.io/api/uncheck
-
+describe('Use Page Object', function () {
+  context('Mark all as completed', function () {
     beforeEach(function () {
       todoPage.visit()
       todoPage.createTodos()
